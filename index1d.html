@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Perlin Noise Line</title>
+</head>
+<body>
+<canvas id="noiseCanvas" width="800" height="400"></canvas>
+
+<script type="module">
+import { PerlinNoise } from "./PerlinNoise.js";
+
+// Canvasに線を描画
+const canvas = document.getElementById('noiseCanvas');
+const ctx = canvas.getContext('2d');
+
+const noise = new PerlinNoise();
+const width = canvas.width;
+const height = canvas.height;
+
+function drawNoiseLine() {
+  ctx.clearRect(0, 0, width, height);
+  ctx.beginPath();
+  ctx.moveTo(0, height / 2);
+
+  for (let x = 0; x < width; x++) {
+    const y = height / 2 + noise.noise(x * 0.01) * 100;
+    ctx.lineTo(x, y);
+  }
+
+  ctx.strokeStyle = 'black';
+  ctx.lineWidth = 2;
+  ctx.stroke();
+}
+drawNoiseLine();
+</script>
+</body>
+</html>
