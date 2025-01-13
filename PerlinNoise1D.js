@@ -1,4 +1,4 @@
-export class PerlinNoise {
+export class PerlinNoise1D {
   constructor() {
     this.permutation = [];
     for (let i = 0; i < 256; i++) {

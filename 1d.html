@@ -29,7 +29,7 @@ a {
 </style>
 
 <script type="module">
-import { PerlinNoise } from "./PerlinNoise.js";
+import { PerlinNoise1D } from "./PerlinNoise1D.js";
 
 const setSize = () => {
   const dpi = devicePixelRatio;
@@ -41,7 +41,7 @@ setSize();
 
 const ctx = canvas.getContext('2d');
 
-const noise = new PerlinNoise();
+const noise = new PerlinNoise1D();
 
 let t = 0;
 const draw = () => {
