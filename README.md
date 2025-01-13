@@ -1,7 +1,8 @@
 # PerlinNoise.js
 
-- [PerlinNoise2D DEMO](https://code4fukui.github.io/PerlinNoise/)
-- [PerlinNoise DEMO](https://code4fukui.github.io/PerlinNoise/index1d.html)
+- [PerlinNoise DEMO](https://code4fukui.github.io/PerlinNoise/1d.html)
+- [PerlinNoise2D DEMO](https://code4fukui.github.io/PerlinNoise/2d.html)
+- [PerlinNoise3D DEMO](https://code4fukui.github.io/PerlinNoise/3d.html)
 
 ## reference
 

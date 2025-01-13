@@ -1,0 +1,71 @@
+<!DOCTYPE html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width"><link rel="icon" href="data:">
+<title>PerlinNoise3D DEMO</title>
+</head>
+<body>
+<canvas id="canvas"></canvas>
+<div class=credit><a href=https://github.com/code4fukui/PerlinNoise/>PerlinNoise src on GitHub</a></div>
+
+<style>
+body {
+  margin: 0;
+  padding: 0;
+}
+canvas {
+  overflow: hidden;
+  width: 100vw;
+  height: 100vh;
+  background-color: black;
+}
+.credit {
+  position: absolute;
+  padding: .5em;
+  z-index: 1000;
+  color: white;
+  bottom: 0;
+}
+a {
+  color: white !important;
+}
+</style>
+
+<script type="module">
+import { PerlinNoise3D } from "./PerlinNoise3D.js";
+
+const noise = new PerlinNoise3D();
+
+const setSize = () => {
+  const dpi = devicePixelRatio;
+  canvas.width = innerWidth * dpi;
+  canvas.height = innerHeight * dpi;
+};
+document.body.onresize = () => setSize();
+setSize();
+
+const ctx = canvas.getContext("2d");
+
+let t = 0;
+function drawNoise() {
+  const width = canvas.width;
+  const height = canvas.height;
+  ctx.clearRect(0, 0, width, height);
+
+  for (let y = 0; y < height; y += 20) {
+    for (let x = 0; x < width; x += 20) {
+      const n = (noise.noise(x * 0.01, y * 0.01, t * 0.01) + 1) / 2;
+      const radius = n * 60;
+
+      ctx.beginPath();
+      ctx.arc(x, y, radius, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(${n * 255}, ${n * 255}, ${n * 220}, 0.5)`;
+      ctx.fill();
+    }
+  }
+
+  t++;
+  requestAnimationFrame(drawNoise);
+}
+
+drawNoise();
+</script>
+</body>
+</html>
