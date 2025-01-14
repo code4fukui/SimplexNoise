@@ -31,10 +31,8 @@ a {
 <script type="module">
 import { PerlinNoise2D } from "./PerlinNoise2D.js";
 
-// Canvasに線を描画
-const ctx = canvas.getContext("2d");
-
 const noise = new PerlinNoise2D();
+
 const setSize = () => {
   const dpi = devicePixelRatio;
   canvas.width = innerWidth * dpi;
@@ -42,6 +40,8 @@ const setSize = () => {
 };
 document.body.onresize = () => setSize();
 setSize();
+
+const ctx = canvas.getContext("2d");
 
 let t = 0;
 const draw = () => {
