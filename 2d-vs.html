@@ -1,0 +1,77 @@
+<!DOCTYPE html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width"><link rel="icon" href="data:">
+<title>SimplexNoise2D vs PerlinNoise2D</title>
+</head>
+<body>
+<canvas id="canvas"></canvas><canvas id="canvas2"></canvas>
+<div class=credit>
+<a href=https://github.com/code4fukui/SimplexNoise/>↑SimplexNoise src on GitHub</a>
+<a href=https://github.com/code4fukui/PerlinNoise/>↓PerlinNoise src on GitHub</a>
+</div>
+
+<style>
+body {
+  margin: 0;
+  padding: 0;
+}
+canvas {
+  overflow: hidden;
+  width: 100vw;
+  height: 50vh;
+  background-color: black;
+}
+.credit {
+  position: absolute;
+  padding: .5em;
+  z-index: 1000;
+  color: white;
+  bottom: 0;
+}
+a {
+  color: white !important;
+}
+</style>
+
+<script type="module">
+import { SimplexNoise2D } from "./SimplexNoise2D.js";
+import { PerlinNoise2D } from "https://code4fukui.github.io/PerlinNoise/PerlinNoise2D.js";
+
+const show = (canvas, noise) => {
+  const setSize = () => {
+    const dpi = devicePixelRatio;
+    canvas.width = innerWidth * dpi;
+    canvas.height = innerHeight * dpi;
+  };
+  document.body.addEventListener("resize", () => setSize());
+  setSize();
+
+  const ctx = canvas.getContext("2d");
+
+  let t = 0;
+  const draw = () => {
+    const w = canvas.width;
+    const h = canvas.height;
+    ctx.clearRect(0, 0, w, h);
+    for (let i = 0; i < 30; i++) {
+      ctx.beginPath();
+      ctx.moveTo(0, h / 2);
+      for (let x = 0; x < w; x++) {
+        const y = h / 2 + noise.noise((i + t) * 0.03, x * 0.01) * h * .3;
+        ctx.lineTo(x, y);
+      }
+      const c = i * 8;
+      ctx.strokeStyle = `rgb(${c},${c},${c})`;
+      ctx.lineWidth = 2;
+      ctx.stroke();
+    }
+    t++;
+    requestAnimationFrame(draw);
+  };
+  draw();
+
+};
+show(canvas, new SimplexNoise2D());
+show(canvas2, new PerlinNoise2D());
+
+</script>
+</body>
+</html>

@@ -1,9 +1,9 @@
 <!DOCTYPE html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width"><link rel="icon" href="data:">
-<title>PerlinNoise3D DEMO</title>
+<title>SimplexNoise3D DEMO</title>
 </head>
 <body>
 <canvas id="canvas"></canvas>
-<div class=credit><a href=https://github.com/code4fukui/PerlinNoise/>PerlinNoise src on GitHub</a></div>
+<div class=credit><a href=https://github.com/code4fukui/SimplexNoise/>SimplexNoise src on GitHub</a></div>
 
 <style>
 body {
@@ -29,9 +29,9 @@ a {
 </style>
 
 <script type="module">
-import { PerlinNoise3D } from "./PerlinNoise3D.js";
+import { SimplexNoise3D } from "./SimplexNoise3D.js";
 
-const noise = new PerlinNoise3D();
+const noise = new SimplexNoise3D();
 
 const setSize = () => {
   const dpi = devicePixelRatio;
