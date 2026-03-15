@@ -1,11 +1,11 @@
 # SimplexNoise.js
 
-1〜2文で説明。Simplex Noiseアルゴリズムを使用したノイズ生成ライブラリです。
+Simplex Noiseアルゴリズムを使用したノイズ生成ライブラリです。1D、2D、3Dのシンプレックスノイズを生成でき、Perlinノイズとの比較デモも提供しています。
 
 ## デモ
 
 - [SimplexNoise1D DEMO](https://code4fukui.github.io/SimplexNoise/1d.html)
-- [SimplexNoise2D DEMO](https://code4fukui.github.io/SimplexNoise/2d.html) 
+- [SimplexNoise2D DEMO](https://code4fukui.github.io/SimplexNoise/2d.html)
 - [SimplexNoise3D DEMO](https://code4fukui.github.io/SimplexNoise/3d.html)
 
 - [SimplexNoise1D vs PerlinNoise1D](https://code4fukui.github.io/SimplexNoise/1d-vs.html)
